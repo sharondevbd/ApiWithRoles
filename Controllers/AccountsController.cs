@@ -1,4 +1,5 @@
 ﻿using ApiWithRoles.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +11,7 @@ using System.Text;
 
 namespace ApiWithRoles.Controllers
 {
+	[EnableCors]
 	[Route("api/[controller]")]
 	[ApiController]
 	public class AccountsController : ControllerBase
@@ -30,7 +32,7 @@ namespace ApiWithRoles.Controllers
 			var user= new IdentityUser { UserName = model.Username, Email = model.Email, PhoneNumber=model.PhoneNumber};
 			var result = await _userManager.CreateAsync(user,model.Password);
 			if (result.Succeeded)
-			{
+			{ 
 				return Ok(new { message = "User Registered Sucessfully" });
 			}
 			return BadRequest(result.Errors);

@@ -1,12 +1,14 @@
 ﻿using ApiWithRoles.Data;
 using ApiWithRoles.HelperClasses;
 using ApiWithRoles.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace ApiWithRoles.Controllers
 {
+	[EnableCors]
 	[Route("api/[controller]")]
 	[ApiController]
 	public class UserDataController : ControllerBase
